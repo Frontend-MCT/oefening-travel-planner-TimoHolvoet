@@ -19,9 +19,22 @@ body, html {
 }
 
 /* OBJECTS */
+/* grid */
 .o-grid {
   display: grid;
   gap: calc(var(--gutter)*2);
+}
+
+/* hide */
+.o-hide {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 /* COMPONENTS */
@@ -29,6 +42,8 @@ body, html {
 .c-content {
   height: 100vh;
   overflow-x: auto;
+  padding: var(--gutter) calc(var(--gutter)*2) var(--gutter) 0;
+  box-sizing: border-box;
 }
 
 /* sidebar */
@@ -94,6 +109,38 @@ body, html {
   opacity: 1;
 }
 
+/* country */
+.c-country {
+  display: block;
+  opacity: 1;
+  cursor: pointer;
+}
+
+c-country-input:checked+.c-country {
+  opacity: .6;
+}
+
+.c-country-header {
+  display: flex;
+  align-items: flex-start;
+}
+
+.c-country-header-name {
+  margin: 0 0 calc(var(--gutter)/2) 0;
+  font-size: 1.2rem;
+}
+
+.c-country-header-flag {
+  display: block;
+  height: var(--gutter);
+  margin-left: calc(var(--gutter)/2);
+}
+
+.c-country__native_name {
+  margin: 0;
+  opacity: .6;
+}
+
 /* UTILITIES */
 .u-grid-main-layout {
   min-height: 100vh;
@@ -102,4 +149,8 @@ body, html {
 
 .u-color-alpha {
   color: var(--color-alpha);
+}
+
+.u-grid-overview {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
